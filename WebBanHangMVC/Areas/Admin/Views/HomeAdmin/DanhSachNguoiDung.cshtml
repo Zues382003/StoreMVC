@@ -1,0 +1,45 @@
+﻿@using WebBanHangMVC.Models
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<TUser>;
+@{
+    ViewData["Title"] = "DanhSachNguoiDung";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>DanhSachNguoiDung</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên hiển thị
+            </th>
+            <th>
+                Loại người dùng
+            </th>
+            <th>
+                Hành Động
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Username
+            </td>
+            <td>
+                @item.LoaiUser
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Username">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Username">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Username">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
